@@ -1,20 +1,26 @@
+import React from "react";
 import Sidebar from "./components/sidebar/sideBar";
 import { Route, Routes } from "react-router";
-import Home from "./components/homePage/homePage";
-import Category from "./components/catsByCategory/catsByCategory";
+import "./App.scss";
 
-// import "./App.scss";
+const Home = React.lazy(() => import("./components/homePage/homePage"));
+const Category = React.lazy(
+  () => import("./components/catsByCategory/catsByCategory")
+);
+
 function App() {
   return (
-    <div className="App">
-      <Sidebar />
-      <div className="containerBody">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<Category />} />
-        </Routes>
+    <React.Suspense fallback={<div>...LOADING...</div>}>
+      <div className="App">
+        <Sidebar />
+        <div className="containerBody">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/:id" element={<Category />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </React.Suspense>
   );
 }
 

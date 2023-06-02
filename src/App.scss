@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding: 0px;
+  position: sticky;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.containerBody {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
+}
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(107, 6, 107);
+  font-size: 100px;
+  background-position: center;
+  text-align: center;
+  font-size: 50px;
+  background-size: cover;
+  background-image: url(https://media.istockphoto.com/id/1403070050/vector/vector-funny-purple-cat-childrens-hand-drawn-illustration.jpg?s=612x612&w=0&k=20&c=fjz8w8IeAbXBadcJy4d9MWENiqvvVDpPQY0s2BWTYCE=);
+  @media (max-width: 700px) {
+    font-size: 70px;
+  }
+}

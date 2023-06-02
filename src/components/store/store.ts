@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import categoriesListSlice from "./catergriesSlice";
-import imagesSlice from './catsByCategorySlice'
+import imagesSlice from "./catsByCategorySlice";
+import randomImagesSlice from "./homePageSlice";
 
 const store = configureStore({
   reducer: {
     categories: categoriesListSlice,
     images: imagesSlice,
+    randomImages: randomImagesSlice,
   },
 });
 

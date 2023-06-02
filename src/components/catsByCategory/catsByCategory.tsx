@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import uuid from 'react-uuid'
-// import "./category.scss";
+import uuid from "react-uuid";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { useParams } from "react-router-dom";
-import { fetchImageByCategory, fetchloadMore } from "../store/catsByCategorySlice";
+import {
+  fetchImageByCategory,
+  fetchloadMore,
+} from "../store/catsByCategorySlice";
+
+import "./catsByCategory.scss";
 
 function Category() {
   const [page, setPage] = useState(1);

@@ -8,36 +8,35 @@ export interface ICat {
 }
 
 export interface ICategory {
-  category: ICat[];
+  randomizedCats: ICat[];
   loadMore: boolean;
   loading: boolean;
   error: null;
 }
 
-export const fetchImageByCategory = createAsyncThunk<
+export const fetchImageByRandomImages = createAsyncThunk<
   ICat[],
-  string,
+  undefined,
   { rejectValue: string }
->("category/fetchImageByCategory", async (id, { rejectWithValue }) => {
+>("category/fetchImageByRandomImages", async (_, { rejectWithValue }) => {
   const response = await fetch(
-    `https://api.thecatapi.com/v1/images/search?limit=10&page=1&category_ids=${id}`
+    "https://api.thecatapi.com/v1/images/search?limit=10&page=1"
   );
 
   if (!response.ok) {
     return rejectWithValue("Server Error");
   }
-
   const data = await response.json();
   return data;
 });
 
 export const fetchloadMore = createAsyncThunk<
   ICat[],
-  { id: string; page: number },
+  { page: number },
   { rejectValue: string }
->("load/fetchloadMore", async ({ id, page }, { rejectWithValue }) => {
+>("load/fetchloadMore", async ({ page }, { rejectWithValue }) => {
   const response = await fetch(
-    `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&category_ids=${id}`
+    `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}`
   );
 
   if (!response.ok) {
@@ -49,30 +48,30 @@ export const fetchloadMore = createAsyncThunk<
 });
 
 const initialState: ICategory = {
-  category: [],
+  randomizedCats: [],
   loadMore: false,
   loading: false,
   error: null,
 };
 
-const imagesSlice = createSlice({
-  name: "pet",
+const randomImagesmagesSlice = createSlice({
+  name: "cats",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchImageByCategory.pending, (state) => {
+      .addCase(fetchImageByRandomImages.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchImageByCategory.fulfilled, (state, action) => {
+      .addCase(fetchImageByRandomImages.fulfilled, (state, action) => {
         state.loading = false;
-        state.category = action.payload;
+        state.randomizedCats = action.payload;
       })
       .addCase(fetchloadMore.fulfilled, (state, action) => {
-        state.category = [...state.category, ...action.payload];
+        state.randomizedCats = [...state.randomizedCats, ...action.payload];
       });
   },
 });
 
-export default imagesSlice.reducer;
+export default randomImagesmagesSlice.reducer;
