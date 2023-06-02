@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "./components/sidebar/sideBar";
 import { Route, Routes } from "react-router";
+import Loader from "./components/loader/loader";
 import "./App.scss";
 
 const Home = React.lazy(() => import("./components/homePage/homePage"));
@@ -10,7 +11,7 @@ const Category = React.lazy(
 
 function App() {
   return (
-    <React.Suspense fallback={<div>...LOADING...</div>}>
+    <React.Suspense fallback={<Loader/>}>
       <div className="App">
         <Sidebar />
         <div className="containerBody">
