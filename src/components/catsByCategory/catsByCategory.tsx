@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import uuid from "react-uuid";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { useParams } from "react-router-dom";
-import {
-  fetchImageByCategory,
-  fetchloadMore,
-} from "../store/catsByCategorySlice";
+import { fetchImageByCategory, fetchloadMore} from "../store/catsByCategorySlice";
 
 import "./catsByCategory.scss";
 
@@ -28,9 +25,9 @@ function Category() {
 
   return (
     <div className="photosContainer">
-      {category.map((e) => (
+      {category.map((image) => (
         <div key={uuid()}>
-          <img src={e.url} alt="" />
+          <img src={image.url} alt="cat" />
         </div>
       ))}
       <button onClick={handleloadMore}>Load More</button>

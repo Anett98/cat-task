@@ -24,9 +24,9 @@ function Home() {
 
   return (
     <div className="photosContainer">
-      {randomized.map((e) => (
+      {randomized.map((image) => (
         <div key={uuid()}>
-          <img src={e.url} alt="" />
+          <img src={image.url} alt="cat" />
         </div>
       ))}
       <button onClick={handleloadMore}>Load More</button>

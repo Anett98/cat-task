@@ -9,7 +9,7 @@ function Sidebar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const category = useAppSelector((state) => state.categories.list);
-  const [isHide, setIsHide] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     dispatch(fetchCategoriesList());
@@ -18,25 +18,25 @@ function Sidebar() {
   return (
     <div className="sidebarContainer">
       <div className="categoriesList">
-        <button onClick={() => navigate("/")}>Go Home</button>
-        {category.map((e) => (
-          <li key={e.id}>
-            <Link to={`/${e.id}`}>{e.name}</Link>
+        <button onClick={() => navigate("/")}>Homepage</button>
+        {category.map((image) => (
+          <li key={image.id}>
+            <Link to={`/${image.id}`}>{image.name}</Link>
           </li>
         ))}
-        <div className="burgerMenu" onClick={() => setIsHide(!isHide)}>
+        <div className="burgerMenu" onClick={() => setIsHidden(!isHidden)}>
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
       <div
-        className={!isHide ? "mediaCategoriesList" : "showMediaCategoriesList"}
+        className={!isHidden ? "mediaCategoriesList" : "showMediaCategoriesList"}
       >
-        <button onClick={() => navigate("/")}>Go Home</button>
-        {category.map((e) => (
-          <li key={e.id}>
-            <Link to={`/${e.id}`}>{e.name}</Link>
+        <button onClick={() => navigate("/")}>Homepage</button>
+        {category.map((image) => (
+          <li key={image.id}>
+            <Link to={`/${image.id}`}>{image.name}</Link>
           </li>
         ))}
       </div>
